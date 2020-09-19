@@ -47,3 +47,5 @@ if ($cart) {
         }
     })
 }
+
+M.Tabs.init(document.querySelectorAll('.tabs'))
