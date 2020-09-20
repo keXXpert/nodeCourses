@@ -2,7 +2,7 @@
 <form action="/add" method="POST">
 
     <div class="input-field">
-        <input id="title"  name="title" type="text" class="validate" required>
+        <input id="title" name="title" type="text" class="validate" required>
         <label for="title">Course title</label>
         <span class="helper-text" data-error="Enter title"></span>
 
@@ -19,5 +19,6 @@
         <span class="helper-text" data-error="Enter URL"></span>
 
     </div>
+    <input type='hidden' name='_csrf' value='{{csrf}}'>
     <button class="btn btn-primary">Submit</button>
 </form>

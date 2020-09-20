@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path')
 const Handlebars = require('handlebars')
+const csrf = require('csurf')
+const flash = require('connect-flash')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
@@ -29,7 +31,7 @@ const store = new MongoStore({
     uri: MONGO_DB_URI
 })
 
-app.engine('hbs', hbs.engine)
+app.engine('hbs', hbs.engine) 
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
@@ -41,6 +43,8 @@ app.use(session({
     saveUninitialized: false,
     store
 }))
+app.use(csrf())
+app.use(flash())
 app.use(varMiddleware)
 app.use(userMiddleware)
 app.use('/', homeRoutes)
